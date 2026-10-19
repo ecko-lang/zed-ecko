@@ -64,21 +64,6 @@ local clone and set `repository = "file:///absolute/path/to/clone"` and
 | `languages/ecko/indents.scm` | indent inside `{ }`, `[ ]` and `( )` |
 | `languages/ecko/outline.scm` | functions, types, templates and top-level bindings |
 
-## Publishing
-
-Zed's registry is a pull request to
-[`zed-industries/extensions`](https://github.com/zed-industries/extensions)
-adding the extension as a submodule. Its rules that matter here:
-
-- The extension's repository must be public and carry an accepted open-source
-  licence. This one and the grammar are both MIT, and each is published as its
-  own public repository.
-- A human must open the pull request and answer review questions; the
-  registry does not accept contributions from autonomous agents.
-
-Test the dev install, then follow Zed's
-[publishing guide](https://zed.dev/docs/extensions/publishing/overview).
-
 ## License
 
 MIT. See [LICENSE](LICENSE).
