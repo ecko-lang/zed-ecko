@@ -1,0 +1,273 @@
+{
+  "Function (block)": {
+    "prefix": "fn",
+    "body": [
+      "fn ${1:name}(${2:args}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Function with a block body"
+  },
+  "Function (expression)": {
+    "prefix": "fne",
+    "body": "fn ${1:name}(${2:args}) = $0",
+    "description": "Single-expression function"
+  },
+  "Lambda": {
+    "prefix": "lambda",
+    "body": "fn(${1:x}) $0",
+    "description": "Anonymous function"
+  },
+  "Prompt template": {
+    "prefix": "template",
+    "body": [
+      "template ${1:name}(${2:args}) = \"\"\"",
+      "\t$0",
+      "\"\"\""
+    ],
+    "description": "Prompt template function"
+  },
+  "AI call": {
+    "prefix": "ai",
+    "body": "ai \"$1\"",
+    "description": "AI call"
+  },
+  "AI call (typed)": {
+    "prefix": "ait",
+    "body": "ai[${1:Int}] \"$2\"",
+    "description": "AI call with a typed result"
+  },
+  "AI call (tools)": {
+    "prefix": "aiu",
+    "body": "ai \"$1\" using [${2:tool}]",
+    "description": "AI call offering tools"
+  },
+  "Contract: ensures": {
+    "prefix": "@ensures",
+    "body": "@ensures(${1:result > 0})",
+    "description": "Postcondition contract (boolean or natural language)"
+  },
+  "Contract: requires": {
+    "prefix": "@requires",
+    "body": "@requires(${1:n > 0})",
+    "description": "Precondition contract"
+  },
+  "Tool annotation": {
+    "prefix": "@tool",
+    "body": "@tool(\"${1:description}\")",
+    "description": "Expose a function to `ai ... using`"
+  },
+  "Match": {
+    "prefix": "match",
+    "body": [
+      "match ${1:value} {",
+      "\t${2:pattern} => $3",
+      "\t_ => $0",
+      "}"
+    ],
+    "description": "Match expression"
+  },
+  "For loop": {
+    "prefix": "for",
+    "body": [
+      "for ${1:item} in ${2:iterable} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "For loop"
+  },
+  "While loop": {
+    "prefix": "while",
+    "body": [
+      "while ${1:condition} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "While loop"
+  },
+  "Loop": {
+    "prefix": "loop",
+    "body": [
+      "loop {",
+      "\t$0",
+      "\tif ${1:done} {",
+      "\t\tbreak",
+      "\t}",
+      "}"
+    ],
+    "description": "Unconditional loop"
+  },
+  "If": {
+    "prefix": "if",
+    "body": [
+      "if ${1:condition} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "If block"
+  },
+  "If / else": {
+    "prefix": "ifelse",
+    "body": [
+      "if ${1:condition} {",
+      "\t$2",
+      "} else {",
+      "\t$0",
+      "}"
+    ],
+    "description": "If / else block"
+  },
+  "Try / catch": {
+    "prefix": "try",
+    "body": [
+      "try {",
+      "\t$1",
+      "} catch (${2:err}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Error handling"
+  },
+  "Type definition": {
+    "prefix": "type",
+    "body": "type ${1:Name} = ${2:Variant}",
+    "description": "Type / ADT definition"
+  },
+  "Import": {
+    "prefix": "import",
+    "body": "import std.${1:module}",
+    "description": "Import a standard-library module"
+  },
+  "SQL query block": {
+    "prefix": "sql",
+    "body": "sql { ${1:SELECT * FROM ${2:table} WHERE ${3:id} = {${4:id}}} }",
+    "description": "sql { \u2026 } query block with bind holes"
+  },
+  "Secret": {
+    "prefix": "secret",
+    "body": "secret(${1:value})",
+    "description": "Wrap a value so it redacts in logs/strings"
+  },
+  "Unless": {
+    "prefix": "unless",
+    "body": [
+      "unless ${1:condition} {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Unless block"
+  },
+  "Doc comment": {
+    "prefix": "##",
+    "body": [
+      "## ${1:What it does.}",
+      "##",
+      "## example:",
+      "##   ${2:call()}"
+    ],
+    "description": "A `##` documentation block, read by `ecko doc`."
+  },
+  "Export function": {
+    "prefix": "efn",
+    "body": [
+      "export fn ${1:name}(${2:args}) = $0"
+    ],
+    "description": "Exported function (definitions are private by default)."
+  },
+  "Re-export": {
+    "prefix": "exfrom",
+    "body": [
+      "export * from \"./${1:module}.ecko\""
+    ],
+    "description": "Re-export another module's whole surface."
+  },
+  "Re-export named": {
+    "prefix": "exnamed",
+    "body": [
+      "export { ${1:name} } from \"./${2:module}.ecko\""
+    ],
+    "description": "Re-export selected names."
+  },
+  "Destructuring": {
+    "prefix": "letd",
+    "body": [
+      "let (${1:a}, ${2:b}) = ${3:pair}"
+    ],
+    "description": "Destructuring binding."
+  },
+  "Async function": {
+    "prefix": "afn",
+    "body": [
+      "async fn ${1:name}(${2:args}) {",
+      "\t$0",
+      "}"
+    ],
+    "description": "Async function - calling it spawns a task."
+  },
+  "Await": {
+    "prefix": "await",
+    "body": [
+      "await ${1:task}"
+    ],
+    "description": "Join a spawned task."
+  },
+  "AI call (vision)": {
+    "prefix": "aion",
+    "body": [
+      "ai \"$1\" on ${2:img}"
+    ],
+    "description": "Image input."
+  },
+  "AI call (session)": {
+    "prefix": "aiw",
+    "body": [
+      "ai \"$1\" with ${2:chat}"
+    ],
+    "description": "Multi-turn call against a session."
+  },
+  "AI call (stream)": {
+    "prefix": "ais",
+    "body": [
+      "ai \"$1\" -> stream"
+    ],
+    "description": "Streaming call."
+  },
+  "AI call (voting)": {
+    "prefix": "aiv",
+    "body": [
+      "ai[${1:Type}] ${2:3} \"$3\""
+    ],
+    "description": "Majority vote over n samples."
+  },
+  "Untrusted param": {
+    "prefix": "@untrusted",
+    "body": [
+      "template ${1:name}(@untrusted ${2:value}) = \"\"\"",
+      "\t$0 {input ${2:value}}",
+      "\"\"\""
+    ],
+    "description": "Injection-safe prompt template."
+  },
+  "Parallel map": {
+    "prefix": "pmap",
+    "body": [
+      "pmap(${1:items}, fn(${2:item}) $0)"
+    ],
+    "description": "Data-parallel map."
+  },
+  "Cell": {
+    "prefix": "cell",
+    "body": [
+      "${1:state} = cell(${2:0})",
+      "cell_update(${1:state}, fn(v) $0)"
+    ],
+    "description": "Shared mutable state."
+  },
+  "Channel": {
+    "prefix": "channel",
+    "body": [
+      "${1:ch} = channel(${2:16})"
+    ],
+    "description": "Bounded channel."
+  }
+}

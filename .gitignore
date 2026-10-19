@@ -1,0 +1,4 @@
+/target/
+*.wasm
+# Zed clones and builds the grammar here on a dev install.
+/grammars/

@@ -3,12 +3,18 @@ name = "Ecko"
 version = "0.74.1"
 schema_version = 1
 authors = ["Sean Nieuwoudt <sean@isean.co.za>"]
-description = "Ecko language support: syntax highlighting, outline, brackets and indentation."
+description = "Ecko language support: highlighting, completion, diagnostics, formatting and snippets via ecko lsp."
 repository = "https://github.com/ecko-lang/zed-ecko"
+snippets = ["./snippets/ecko.json"]
 
-# Zed clones the grammar and builds it to WebAssembly. Until
-# ecko-lang/tree-sitter-ecko is published, point this at a local clone for a
-# dev install: repository = "file:///path/to/tree-sitter-ecko", rev = its HEAD.
+# The server is `ecko lsp` from the installed ecko binary; src/ecko.rs finds it.
+[language_servers.ecko]
+name = "Ecko"
+languages = ["Ecko"]
+
+# Zed clones the grammar at this commit and builds it to WebAssembly. Bump rev
+# to the new tree-sitter-ecko commit whenever the grammar changes; to test an
+# unpushed grammar, point repository at a local clone ("file:///path").
 [grammars.ecko]
 repository = "https://github.com/ecko-lang/tree-sitter-ecko"
-rev = "0000000000000000000000000000000000000000"
+rev = "cb5e5db3cc586e03512414372ddfff42406b663b"

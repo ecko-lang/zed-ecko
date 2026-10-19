@@ -1,0 +1,13 @@
+[package]
+name = "zed-ecko"
+version = "0.74.1"
+edition = "2021"
+publish = false
+license = "MIT"
+
+[lib]
+path = "src/ecko.rs"
+crate-type = ["cdylib"]
+
+[dependencies]
+zed_extension_api = "0.7.0"
